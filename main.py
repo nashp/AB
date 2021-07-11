@@ -116,7 +116,7 @@ for portfolio in portfolios:
     print('R2: ', y_hat.rsquared)
     print("Params: ", y_hat.params)
 
-    model = RollingOLS(joined_data[portfolios[1]], X, window=36, min_nobs=36)
+    model = RollingOLS(joined_data[portfolio], X, window=36, min_nobs=36)
     rolling_res = model.fit()
     params = rolling_res.params
     rolling_res.pvalues
@@ -148,4 +148,6 @@ f, ax = plt.subplots(figsize=(11, 9))
 cmap = sns.diverging_palette(230, 20, as_cmap=True)
 sns.heatmap(cor, mask=mask, cmap=cmap, vmax=.3, center=0,
             square=True, linewidths=.5, cbar_kws={"shrink": .5})
+
+
 
